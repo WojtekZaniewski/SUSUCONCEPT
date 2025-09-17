@@ -96,178 +96,181 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-black">
-      <div className="min-h-screen flex flex-col">
-        <div
-          className={`transition-all duration-1500 ease-in-out ${
-            animationState === "initial" ? "flex items-center justify-center flex-1" : "pt-12 flex justify-center"
-          }`}
-        >
+    <>
+      {/* Hero Section */}
+      <section className="min-h-screen bg-black flex flex-col">
+        <div className="flex-1 flex flex-col">
           <div
-            className="text-center cursor-pointer"
-            onClick={animationState !== "initial" ? handleLogoClick : undefined}
+            className={`transition-all duration-1500 ease-in-out ${
+              animationState === "initial" ? "flex items-center justify-center flex-1" : "pt-12 flex justify-center"
+            }`}
           >
-            <h1
-              className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
-                animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
-              }`}
-              style={{ fontFamily: "var(--font-pirata-one)" }}
+            <div
+              className="text-center cursor-pointer"
+              onClick={animationState !== "initial" ? handleLogoClick : undefined}
             >
-              SUSU CONCEPT
-            </h1>
-            <p
-              className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
-                animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
-              }`}
-              style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-            >
-              ARCHITEKTURA WNĘTRZ
-            </p>
-          </div>
-        </div>
-
-        <nav
-          className={`transition-all duration-1000 ease-in-out delay-500 my-[-60px] px-3.5 ${
-            animationState === "complete" || animationState === "carousel" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-          }`}
-        >
-          <div className="grid grid-cols-3 items-center py-4 max-w-6xl mx-auto border-0 px-3">
-            {/* Left section: Portfolio and O Nas */}
-            <div className="flex space-x-8 justify-end">
-              <button
-                className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+              <h1
+                className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
+                  animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
+                }`}
+                style={{ fontFamily: "var(--font-pirata-one)" }}
+              >
+                SUSU CONCEPT
+              </h1>
+              <p
+                className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
+                  animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
+                }`}
                 style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
               >
-                PORTFOLIO
-              </button>
-              <button
-                className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
-                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-              >
-                O NAS
-              </button>
-            </div>
-
-            {/* Center logo space */}
-            <div className="flex justify-center">
-              <div className="w-48"></div>
-            </div>
-
-            {/* Right section: Kontakt and Umów Wizytę */}
-            <div className="flex space-x-8 justify-start">
-              <button
-                className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
-                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-              >
-                KONTAKT
-              </button>
-              <button
-                className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
-                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-              >
-                UMÓW WIZYTĘ
-              </button>
+                ARCHITEKTURA WNĘTRZ
+              </p>
             </div>
           </div>
-        </nav>
 
-        {/* Carousel Section */}
-        <div
-          className={`transition-all duration-2000 ease-in-out mt-16 ${
-            animationState === "carousel" 
-              ? "opacity-100 translate-y-0" 
-              : "opacity-0 translate-y-8 pointer-events-none"
-          }`}
-        >
-          <div className="max-w-6xl mx-auto px-6 py-8">
-            <Carousel
-              setApi={setApi}
-              opts={{
-                align: "start",
-                loop: false,
-                duration: 20, // Slower transition duration (default is 10)
-                dragFree: false,
-              }}
-              className="w-full"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <CarouselContent>
-                <CarouselItem>
-                  <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                    <Image
-                      src="/3.png"
-                      alt="Interior Design 1"
-                      fill
-                      className="object-cover rounded-2xl"
-                      priority
-                    />
-                  </div>
-                </CarouselItem>
-                <CarouselItem>
-                  <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                    <Image
-                      src="/2.jpg"
-                      alt="Interior Design 2"
-                      fill
-                      className="object-cover rounded-2xl"
-                    />
-                  </div>
-                </CarouselItem>
-                <CarouselItem>
-                  <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                    <Image
-                      src="/5.jpg"
-                      alt="Interior Design 3"
-                      fill
-                      className="object-cover rounded-2xl"
-                    />
-                  </div>
-                </CarouselItem>
-              </CarouselContent>
-              <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
-              <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
-            </Carousel>
-            
-            {/* Dot Indicators */}
-            <div className="flex justify-center mt-6 space-x-2">
-              {[0, 1, 2].map((index) => (
+          <nav
+            className={`transition-all duration-1000 ease-in-out delay-500 my-[-60px] px-3.5 ${
+              animationState === "complete" || animationState === "carousel" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+            }`}
+          >
+            <div className="grid grid-cols-3 items-center py-4 max-w-6xl mx-auto border-0 px-3">
+              {/* Left section: Portfolio and O Nas */}
+              <div className="flex space-x-8 justify-end">
                 <button
-                  key={index}
-                  onClick={() => api?.scrollTo(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                    current === index
-                      ? "bg-white scale-110"
-                      : "bg-white/30 hover:bg-white/50"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Typing Text */}
-            <div className="text-center mt-8">
-              <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
-                {typingText}
-                <span className="animate-pulse">|</span>
-              </h2>
-            </div>
-
-            {/* Down Arrow */}
-            {showArrow && (
-              <div className="flex justify-center mt-8">
-                <button
-                  onClick={scrollToAbout}
-                  className="text-white/70 hover:text-white transition-all duration-300 hover:scale-110 animate-bounce"
-                  aria-label="Scroll to about section"
+                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
                 >
-                  <ChevronDown size={32} />
+                  PORTFOLIO
+                </button>
+                <button
+                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                >
+                  O NAS
                 </button>
               </div>
-            )}
+
+              {/* Center logo space */}
+              <div className="flex justify-center">
+                <div className="w-48"></div>
+              </div>
+
+              {/* Right section: Kontakt and Umów Wizytę */}
+              <div className="flex space-x-8 justify-start">
+                <button
+                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                >
+                  KONTAKT
+                </button>
+                <button
+                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                >
+                  UMÓW WIZYTĘ
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          {/* Carousel Section */}
+          <div
+            className={`transition-all duration-2000 ease-in-out mt-16 ${
+              animationState === "carousel" 
+                ? "opacity-100 translate-y-0" 
+                : "opacity-0 translate-y-8 pointer-events-none"
+            }`}
+          >
+            <div className="max-w-6xl mx-auto px-6 py-8">
+              <Carousel
+                setApi={setApi}
+                opts={{
+                  align: "start",
+                  loop: false,
+                  duration: 20, // Slower transition duration (default is 10)
+                  dragFree: false,
+                }}
+                className="w-full"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <CarouselContent>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/3.png"
+                        alt="Interior Design 1"
+                        fill
+                        className="object-cover rounded-2xl"
+                        priority
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/2.jpg"
+                        alt="Interior Design 2"
+                        fill
+                        className="object-cover rounded-2xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/5.jpg"
+                        alt="Interior Design 3"
+                        fill
+                        className="object-cover rounded-2xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+                <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+              </Carousel>
+              
+              {/* Dot Indicators */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {[0, 1, 2].map((index) => (
+                  <button
+                    key={index}
+                    onClick={() => api?.scrollTo(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                      current === index
+                        ? "bg-white scale-110"
+                        : "bg-white/30 hover:bg-white/50"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Typing Text */}
+              <div className="text-center mt-8">
+                <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
+                  {typingText}
+                  <span className="animate-pulse">|</span>
+                </h2>
+              </div>
+
+              {/* Down Arrow */}
+              {showArrow && (
+                <div className="flex justify-center mt-8">
+                  <button
+                    onClick={scrollToAbout}
+                    className="text-white/70 hover:text-white transition-all duration-300 hover:scale-110 animate-bounce"
+                    aria-label="Scroll to about section"
+                  >
+                    <ChevronDown size={32} />
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* About Section */}
       <section id="about-section" className="min-h-screen bg-black py-20">
@@ -296,6 +299,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   )
 }
