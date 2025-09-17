@@ -467,11 +467,11 @@ export default function HomePage() {
             {/* Right side - Text content */}
             <div className="order-1 lg:order-2 flex flex-col justify-center min-h-[600px]">
               <div className="space-y-8">
-                {/* Top center - Typing animation */}
-                <div className="text-center">
+                {/* Top center - Typing animation with fixed height */}
+                <div className="text-center h-16 flex items-center justify-center">
                   <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
-                    {projectTypingText}
-                    <span className="animate-pulse">|</span>
+                    {projectTypingText || "nasz najnowszy projekt"}
+                    {projectTypingText && <span className="animate-pulse">|</span>}
                   </h2>
                 </div>
 
