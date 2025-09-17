@@ -622,6 +622,23 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Mini Footer */}
+      <footer className="bg-black py-8 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <div className="text-white/60 text-sm">
+              aerodigital
+            </div>
+            <div className="text-white/80 text-sm font-medium">
+              susu concept
+            </div>
+            <div className="text-white/60 text-sm">
+              2025
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
