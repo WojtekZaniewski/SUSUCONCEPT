@@ -110,7 +110,6 @@ export default function HomePage() {
           index++
         } else {
           clearInterval(typingInterval)
-          setShowProjectContent(true)
         }
       }, 80) // 80ms per character
 
@@ -119,6 +118,11 @@ export default function HomePage() {
 
     return () => clearTimeout(timer)
   }, [isProjectVisible])
+
+  // Show project content immediately on page load
+  useEffect(() => {
+    setShowProjectContent(true)
+  }, [])
 
   const handleLogoClick = () => {
     console.log("Navigate to main page")
@@ -463,35 +467,33 @@ export default function HomePage() {
             {/* Right side - Text content */}
             <div className="order-1 lg:order-2 flex flex-col justify-center min-h-[600px]">
               <div className="space-y-8">
-                {/* Top right - Typing animation */}
-                <div className="text-right">
+                {/* Top center - Typing animation */}
+                <div className="text-center">
                   <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
                     {projectTypingText}
                     <span className="animate-pulse">|</span>
                   </h2>
                 </div>
 
-                {/* Middle right - Project description */}
-                {showProjectContent && (
-                  <div className="text-bubble p-8 md:p-10 rounded-3xl">
-                    <div className="text-white/90 text-lg md:text-xl leading-relaxed">
-                      <p className="mb-6">
-                        Prezentujemy nasz najnowszy projekt - luksusowy apartament w centrum miasta, 
-                        gdzie nowoczesność spotyka się z elegancją. Przestrzeń została zaprojektowana 
-                        z myślą o komforcie i funkcjonalności.
-                      </p>
-                      <p className="mb-6">
-                        Projekt obejmuje kompleksowe urządzenie wnętrza z wykorzystaniem najwyższej 
-                        jakości materiałów i innowacyjnych rozwiązań. Każdy detal został przemyślany, 
-                        aby stworzyć harmonijną i inspirującą przestrzeń do życia.
-                      </p>
-                      <p>
-                        Rezultat to wyjątkowe wnętrze, które odzwierciedla osobowość właścicieli 
-                        i zapewnia komfort na najwyższym poziomie.
-                      </p>
-                    </div>
+                {/* Middle - Project description (always visible) */}
+                <div className="text-bubble p-8 md:p-10 rounded-3xl">
+                  <div className="text-white/90 text-lg md:text-xl leading-relaxed">
+                    <p className="mb-6">
+                      Prezentujemy nasz najnowszy projekt - luksusowy apartament w centrum miasta, 
+                      gdzie nowoczesność spotyka się z elegancją. Przestrzeń została zaprojektowana 
+                      z myślą o komforcie i funkcjonalności.
+                    </p>
+                    <p className="mb-6">
+                      Projekt obejmuje kompleksowe urządzenie wnętrza z wykorzystaniem najwyższej 
+                      jakości materiałów i innowacyjnych rozwiązań. Każdy detal został przemyślany, 
+                      aby stworzyć harmonijną i inspirującą przestrzeń do życia.
+                    </p>
+                    <p>
+                      Rezultat to wyjątkowe wnętrze, które odzwierciedla osobowość właścicieli 
+                      i zapewnia komfort na najwyższym poziomie.
+                    </p>
                   </div>
-                )}
+                </div>
               </div>
             </div>
           </div>
