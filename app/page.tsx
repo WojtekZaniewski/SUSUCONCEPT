@@ -189,24 +189,6 @@ export default function HomePage() {
           animation: gentleShimmer 8s ease-in-out infinite;
         }
         
-        .text-bubble::after {
-          content: '';
-          position: absolute;
-          top: -1px;
-          left: -1px;
-          right: -1px;
-          bottom: -1px;
-          background: conic-gradient(
-            from 0deg,
-            transparent,
-            rgba(255, 248, 220, 0.12),
-            transparent
-          );
-          border-radius: inherit;
-          animation: gentleBorderGlow 12s linear infinite;
-          z-index: -1;
-        }
-        
         @keyframes gentleShimmer {
           0% {
             left: -100%;
@@ -221,15 +203,6 @@ export default function HomePage() {
           100% {
             left: 100%;
             opacity: 0;
-          }
-        }
-        
-        @keyframes gentleBorderGlow {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
           }
         }
       `}</style>
