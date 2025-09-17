@@ -500,30 +500,123 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about-section" className="min-h-screen bg-black py-20">
+      {/* Contact Section */}
+      <section id="contact-section" className="min-h-screen bg-black py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center">
             <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-wider">
-              O NAS
+              UMÓW WIZYTĘ
             </h2>
-            <div className="text-bubble p-8 md:p-12 rounded-3xl max-w-5xl mx-auto mb-12">
-              <div className="text-white/90 text-lg md:text-xl leading-relaxed">
-                <p className="mb-6">
-                  Jesteśmy zespołem pasjonatów architektury wnętrz, którzy tworzą wyjątkowe przestrzenie 
-                  łączące funkcjonalność z estetyką. Nasze projekty to nie tylko piękne wnętrza, ale przede 
-                  wszystkim miejsca, w których ludzie czują się dobrze i komfortowo.
-                </p>
-                <p className="mb-6">
-                  Specjalizujemy się w projektowaniu mieszkań, domów jednorodzinnych, biur i przestrzeni 
-                  komercyjnych. Każdy projekt traktujemy indywidualnie, słuchając potrzeb naszych klientów 
-                  i tworząc rozwiązania dopasowane do ich stylu życia.
-                </p>
-                <p>
-                  Nasza filozofia opiera się na harmonii między formą a funkcją, nowoczesnymi trendami 
-                  a ponadczasowymi rozwiązaniami. Wierzymy, że dobrze zaprojektowane wnętrze ma moc 
-                  transformacji codziennego życia.
-                </p>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Left side - Contact info */}
+              <div className="space-y-8">
+                <div className="text-bubble p-8 md:p-10 rounded-3xl">
+                  <div className="text-white/90 text-lg md:text-xl leading-relaxed">
+                    <h3 className="text-white text-2xl md:text-3xl font-bold mb-6 tracking-wider">
+                      Skontaktuj się z nami
+                    </h3>
+                    <div className="space-y-4">
+                      <p className="flex items-center">
+                        <span className="text-white/70 mr-3">📧</span>
+                        <span>kontakt@susuconcept.pl</span>
+                      </p>
+                      <p className="flex items-center">
+                        <span className="text-white/70 mr-3">📱</span>
+                        <span>+48 123 456 789</span>
+                      </p>
+                      <p className="flex items-center">
+                        <span className="text-white/70 mr-3">📍</span>
+                        <span>Warszawa, Polska</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right side - Contact form */}
+              <div className="text-bubble p-8 md:p-10 rounded-3xl">
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-white/90 text-sm font-medium mb-2">
+                        Imię *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300"
+                        placeholder="Twoje imię"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-white/90 text-sm font-medium mb-2">
+                        Nazwisko *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300"
+                        placeholder="Twoje nazwisko"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-white/90 text-sm font-medium mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300"
+                      placeholder="twoj@email.pl"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-white/90 text-sm font-medium mb-2">
+                      Telefon
+                    </label>
+                    <input
+                      type="tel"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300"
+                      placeholder="+48 123 456 789"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-white/90 text-sm font-medium mb-2">
+                      Typ projektu
+                    </label>
+                    <select className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300">
+                      <option value="" className="bg-black text-white">Wybierz typ projektu</option>
+                      <option value="mieszkanie" className="bg-black text-white">Mieszkanie</option>
+                      <option value="dom" className="bg-black text-white">Dom jednorodzinny</option>
+                      <option value="biuro" className="bg-black text-white">Biuro</option>
+                      <option value="komercyjny" className="bg-black text-white">Przestrzeń komercyjna</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-white/90 text-sm font-medium mb-2">
+                      Wiadomość *
+                    </label>
+                    <textarea
+                      required
+                      rows={4}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300 resize-none"
+                      placeholder="Opisz swój projekt i oczekiwania..."
+                    />
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    className="w-full liquid-glass-button px-8 py-4 rounded-2xl text-white font-medium text-lg transition-all duration-300 hover:scale-105"
+                  >
+                    WYŚLIJ WIADOMOŚĆ
+                  </button>
+                </form>
               </div>
             </div>
           </div>
