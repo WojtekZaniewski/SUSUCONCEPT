@@ -470,7 +470,7 @@ export default function HomePage() {
                 {/* Top center - Typing animation with fixed height */}
                 <div className="text-center h-16 flex items-center justify-center">
                   <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
-                    {projectTypingText || "nasz najnowszy projekt"}
+                    {projectTypingText}
                     {projectTypingText && <span className="animate-pulse">|</span>}
                   </h2>
                 </div>
