@@ -49,7 +49,7 @@ export default function HomePage() {
       const currentIndex = api.selectedScrollSnap()
       const nextIndex = currentIndex === 2 ? 0 : currentIndex + 1
       api.scrollTo(nextIndex)
-    }, 3000) // 3 seconds
+    }, 5000) // 5 seconds
 
     return () => clearInterval(interval)
   }, [api, animationState, isHovered])
@@ -148,6 +148,8 @@ export default function HomePage() {
               opts={{
                 align: "start",
                 loop: false,
+                duration: 20, // Slower transition duration (default is 10)
+                dragFree: false,
               }}
               className="w-full"
               onMouseEnter={() => setIsHovered(true)}
@@ -196,7 +198,7 @@ export default function HomePage() {
                 <button
                   key={index}
                   onClick={() => api?.scrollTo(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-3 h-3 rounded-full transition-all duration-500 ${
                     current === index
                       ? "bg-white scale-110"
                       : "bg-white/30 hover:bg-white/50"
