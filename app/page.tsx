@@ -96,8 +96,8 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-black flex flex-col">
-      <div className="flex-1 flex flex-col">
+    <main className="min-h-screen bg-black">
+      <div className="min-h-screen flex flex-col">
         <div
           className={`transition-all duration-1500 ease-in-out ${
             animationState === "initial" ? "flex items-center justify-center flex-1" : "pt-12 flex justify-center"
@@ -270,7 +270,7 @@ export default function HomePage() {
       </div>
 
       {/* About Section */}
-      <section id="about-section" className="min-h-screen bg-gray-900 py-20">
+      <section id="about-section" className="min-h-screen bg-black py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center">
             <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-wider">
