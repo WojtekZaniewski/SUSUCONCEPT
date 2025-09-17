@@ -13,6 +13,8 @@ export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false)
   const [typingText, setTypingText] = useState("")
   const [showArrow, setShowArrow] = useState(false)
+  const [projectTypingText, setProjectTypingText] = useState("")
+  const [showProjectContent, setShowProjectContent] = useState(false)
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -80,6 +82,28 @@ export default function HomePage() {
 
     return () => clearTimeout(timer)
   }, [animationState])
+
+  // Project typing effect
+  useEffect(() => {
+    const text = "nasz najnowszy projekt"
+    let index = 0
+
+    const timer = setTimeout(() => {
+      const typingInterval = setInterval(() => {
+        if (index < text.length) {
+          setProjectTypingText(text.slice(0, index + 1))
+          index++
+        } else {
+          clearInterval(typingInterval)
+          setShowProjectContent(true)
+        }
+      }, 80) // 80ms per character
+
+      return () => clearInterval(typingInterval)
+    }, 1000) // Start typing 1 second after page load
+
+    return () => clearTimeout(timer)
+  }, [])
 
   const handleLogoClick = () => {
     console.log("Navigate to main page")
@@ -409,6 +433,95 @@ export default function HomePage() {
                   >
                     <ChevronDown size={32} />
                   </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Project Section */}
+      <section className="min-h-screen bg-black py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Carousel */}
+            <div className="order-2 lg:order-1">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: false,
+                  duration: 20,
+                  dragFree: false,
+                }}
+                className="w-full"
+              >
+                <CarouselContent>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/3.png"
+                        alt="Project Interior 1"
+                        fill
+                        className="object-cover rounded-2xl"
+                        priority
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/2.jpg"
+                        alt="Project Interior 2"
+                        fill
+                        className="object-cover rounded-2xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/5.jpg"
+                        alt="Project Interior 3"
+                        fill
+                        className="object-cover rounded-2xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+                <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+              </Carousel>
+            </div>
+
+            {/* Right side - Text content */}
+            <div className="order-1 lg:order-2 space-y-8">
+              {/* Top right - Typing animation */}
+              <div className="text-right">
+                <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
+                  {projectTypingText}
+                  <span className="animate-pulse">|</span>
+                </h2>
+              </div>
+
+              {/* Middle right - Project description */}
+              {showProjectContent && (
+                <div className="text-bubble p-8 md:p-10 rounded-3xl">
+                  <div className="text-white/90 text-lg md:text-xl leading-relaxed">
+                    <p className="mb-6">
+                      Prezentujemy nasz najnowszy projekt - luksusowy apartament w centrum miasta, 
+                      gdzie nowoczesność spotyka się z elegancją. Przestrzeń została zaprojektowana 
+                      z myślą o komforcie i funkcjonalności.
+                    </p>
+                    <p className="mb-6">
+                      Projekt obejmuje kompleksowe urządzenie wnętrza z wykorzystaniem najwyższej 
+                      jakości materiałów i innowacyjnych rozwiązań. Każdy detal został przemyślany, 
+                      aby stworzyć harmonijną i inspirującą przestrzeń do życia.
+                    </p>
+                    <p>
+                      Rezultat to wyjątkowe wnętrze, które odzwierciedla osobowość właścicieli 
+                      i zapewnia komfort na najwyższym poziomie.
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
