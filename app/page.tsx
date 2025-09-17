@@ -148,6 +148,57 @@ export default function HomePage() {
         .liquid-glass-button:active {
           transform: translateY(0);
         }
+        
+        .text-bubble {
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+          position: relative;
+          overflow: hidden;
+          animation: levitate 6s ease-in-out infinite;
+        }
+        
+        @keyframes levitate {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+        
+        .text-bubble::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
+          animation: shimmer 8s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+          0% {
+            left: -100%;
+          }
+          50% {
+            left: 100%;
+          }
+          100% {
+            left: 100%;
+          }
+        }
       `}</style>
       {/* Hero Section */}
       <section className="min-h-screen bg-black flex flex-col">
@@ -331,22 +382,24 @@ export default function HomePage() {
             <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-wider">
               O NAS
             </h2>
-            <div className="text-white/80 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-12">
-              <p className="mb-6">
-                Jesteśmy zespołem pasjonatów architektury wnętrz, którzy tworzą wyjątkowe przestrzenie 
-                łączące funkcjonalność z estetyką. Nasze projekty to nie tylko piękne wnętrza, ale przede 
-                wszystkim miejsca, w których ludzie czują się dobrze i komfortowo.
-              </p>
-              <p className="mb-6">
-                Specjalizujemy się w projektowaniu mieszkań, domów jednorodzinnych, biur i przestrzeni 
-                komercyjnych. Każdy projekt traktujemy indywidualnie, słuchając potrzeb naszych klientów 
-                i tworząc rozwiązania dopasowane do ich stylu życia.
-              </p>
-              <p>
-                Nasza filozofia opiera się na harmonii między formą a funkcją, nowoczesnymi trendami 
-                a ponadczasowymi rozwiązaniami. Wierzymy, że dobrze zaprojektowane wnętrze ma moc 
-                transformacji codziennego życia.
-              </p>
+            <div className="text-bubble p-8 md:p-12 rounded-3xl max-w-5xl mx-auto mb-12">
+              <div className="text-white/90 text-lg md:text-xl leading-relaxed">
+                <p className="mb-6">
+                  Jesteśmy zespołem pasjonatów architektury wnętrz, którzy tworzą wyjątkowe przestrzenie 
+                  łączące funkcjonalność z estetyką. Nasze projekty to nie tylko piękne wnętrza, ale przede 
+                  wszystkim miejsca, w których ludzie czują się dobrze i komfortowo.
+                </p>
+                <p className="mb-6">
+                  Specjalizujemy się w projektowaniu mieszkań, domów jednorodzinnych, biur i przestrzeni 
+                  komercyjnych. Każdy projekt traktujemy indywidualnie, słuchając potrzeb naszych klientów 
+                  i tworząc rozwiązania dopasowane do ich stylu życia.
+                </p>
+                <p>
+                  Nasza filozofia opiera się na harmonii między formą a funkcją, nowoczesnymi trendami 
+                  a ponadczasowymi rozwiązaniami. Wierzymy, że dobrze zaprojektowane wnętrze ma moc 
+                  transformacji codziennego życia.
+                </p>
+              </div>
             </div>
             
             {/* Liquid Glass Buttons */}
