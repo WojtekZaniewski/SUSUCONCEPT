@@ -280,7 +280,7 @@ export default function HomePage() {
           </div>
 
           <nav
-            className={`transition-all duration-1000 ease-in-out delay-500 my-[-60px] px-3.5 ${
+            className={`absolute top-12 left-0 right-0 transition-all duration-1000 ease-in-out delay-500 px-3.5 ${
               animationState === "complete" || animationState === "carousel" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
             }`}
           >
