@@ -9,6 +9,7 @@ export default function HomePage() {
   const [animationState, setAnimationState] = useState<"initial" | "logo" | "complete" | "carousel">("initial")
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -39,6 +40,19 @@ export default function HomePage() {
       setCurrent(api.selectedScrollSnap())
     })
   }, [api])
+
+  // Auto-progression effect
+  useEffect(() => {
+    if (!api || animationState !== "carousel" || isHovered) return
+
+    const interval = setInterval(() => {
+      const currentIndex = api.selectedScrollSnap()
+      const nextIndex = currentIndex === 2 ? 0 : currentIndex + 1
+      api.scrollTo(nextIndex)
+    }, 3000) // 3 seconds
+
+    return () => clearInterval(interval)
+  }, [api, animationState, isHovered])
 
   const handleLogoClick = () => {
     console.log("Navigate to main page")
@@ -136,6 +150,8 @@ export default function HomePage() {
                 loop: false,
               }}
               className="w-full"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
             >
               <CarouselContent>
                 <CarouselItem>
