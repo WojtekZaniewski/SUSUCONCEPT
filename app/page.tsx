@@ -97,6 +97,58 @@ export default function HomePage() {
 
   return (
     <>
+      <style jsx global>{`
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        .liquid-glass-button {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .liquid-glass-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          );
+          transition: left 0.6s ease;
+        }
+        
+        .liquid-glass-button:hover::before {
+          left: 100%;
+        }
+        
+        .liquid-glass-button:hover {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.3);
+          box-shadow: 
+            0 12px 40px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          transform: translateY(-2px);
+        }
+        
+        .liquid-glass-button:active {
+          transform: translateY(0);
+        }
+      `}</style>
       {/* Hero Section */}
       <section className="min-h-screen bg-black flex flex-col">
         <div className="flex-1 flex flex-col">
@@ -279,7 +331,7 @@ export default function HomePage() {
             <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-wider">
               O NAS
             </h2>
-            <div className="text-white/80 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+            <div className="text-white/80 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-12">
               <p className="mb-6">
                 Jesteśmy zespołem pasjonatów architektury wnętrz, którzy tworzą wyjątkowe przestrzenie 
                 łączące funkcjonalność z estetyką. Nasze projekty to nie tylko piękne wnętrza, ale przede 
@@ -295,6 +347,19 @@ export default function HomePage() {
                 a ponadczasowymi rozwiązaniami. Wierzymy, że dobrze zaprojektowane wnętrze ma moc 
                 transformacji codziennego życia.
               </p>
+            </div>
+            
+            {/* Liquid Glass Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button className="liquid-glass-button px-8 py-4 rounded-2xl text-white font-medium text-lg transition-all duration-300 hover:scale-105">
+                PORTFOLIO
+              </button>
+              <button className="liquid-glass-button px-8 py-4 rounded-2xl text-white font-medium text-lg transition-all duration-300 hover:scale-105">
+                KONTAKT
+              </button>
+              <button className="liquid-glass-button px-8 py-4 rounded-2xl text-white font-medium text-lg transition-all duration-300 hover:scale-105">
+                UMÓW WIZYTĘ
+              </button>
             </div>
           </div>
         </div>
