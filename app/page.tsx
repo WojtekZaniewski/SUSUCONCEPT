@@ -150,32 +150,26 @@ export default function HomePage() {
         }
         
         .text-bubble {
-          background: rgba(255, 215, 0, 0.08);
+          background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border: 2px solid rgba(255, 215, 0, 0.3);
+          border: 1px solid rgba(255, 248, 220, 0.15);
           box-shadow: 
-            0 8px 32px rgba(255, 215, 0, 0.15),
-            0 0 40px rgba(255, 215, 0, 0.1),
-            inset 0 1px 0 rgba(255, 215, 0, 0.2),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            0 8px 32px rgba(0, 0, 0, 0.2),
+            0 0 20px rgba(255, 248, 220, 0.05),
+            inset 0 1px 0 rgba(255, 248, 220, 0.08),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.05);
           position: relative;
           overflow: hidden;
-          animation: levitate 4s ease-in-out infinite;
+          animation: levitate 6s ease-in-out infinite;
         }
         
         @keyframes levitate {
           0%, 100% {
-            transform: translateY(0px) rotateX(0deg);
-          }
-          25% {
-            transform: translateY(-6px) rotateX(1deg);
+            transform: translateY(0px);
           }
           50% {
-            transform: translateY(-12px) rotateX(0deg);
-          }
-          75% {
-            transform: translateY(-6px) rotateX(-1deg);
+            transform: translateY(-8px);
           }
         }
         
@@ -189,44 +183,40 @@ export default function HomePage() {
           background: linear-gradient(
             90deg,
             transparent,
-            rgba(255, 215, 0, 0.3),
-            rgba(255, 255, 255, 0.2),
-            rgba(255, 215, 0, 0.3),
+            rgba(255, 248, 220, 0.1),
             transparent
           );
-          animation: goldenShimmer 3s ease-in-out infinite;
+          animation: gentleShimmer 8s ease-in-out infinite;
         }
         
         .text-bubble::after {
           content: '';
           position: absolute;
-          top: -2px;
-          left: -2px;
-          right: -2px;
-          bottom: -2px;
+          top: -1px;
+          left: -1px;
+          right: -1px;
+          bottom: -1px;
           background: conic-gradient(
             from 0deg,
             transparent,
-            rgba(255, 215, 0, 0.4),
-            rgba(255, 255, 255, 0.3),
-            rgba(255, 215, 0, 0.4),
+            rgba(255, 248, 220, 0.12),
             transparent
           );
           border-radius: inherit;
-          animation: borderGlow 4s linear infinite;
+          animation: gentleBorderGlow 12s linear infinite;
           z-index: -1;
         }
         
-        @keyframes goldenShimmer {
+        @keyframes gentleShimmer {
           0% {
             left: -100%;
             opacity: 0;
           }
-          10% {
-            opacity: 1;
+          20% {
+            opacity: 0.3;
           }
-          90% {
-            opacity: 1;
+          80% {
+            opacity: 0.3;
           }
           100% {
             left: 100%;
@@ -234,7 +224,7 @@ export default function HomePage() {
           }
         }
         
-        @keyframes borderGlow {
+        @keyframes gentleBorderGlow {
           0% {
             transform: rotate(0deg);
           }
