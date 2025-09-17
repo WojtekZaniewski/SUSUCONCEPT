@@ -91,20 +91,19 @@ export default function HomePage() {
       const startPosition = window.pageYOffset
       const targetPosition = aboutSection.offsetTop
       const distance = targetPosition - startPosition
-      const duration = 3000 // 3 seconds for very slow scroll
-      let startTime = null
+      const duration = 4000 // 4 seconds for very slow scroll
+      const startTime = performance.now()
 
       const smoothScroll = (currentTime) => {
-        if (startTime === null) startTime = currentTime
         const timeElapsed = currentTime - startTime
         const progress = Math.min(timeElapsed / duration, 1)
         
-        // Easing function for very smooth animation
-        const easeInOutCubic = (t) => {
-          return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+        // Very smooth easing function
+        const easeInOutQuart = (t) => {
+          return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t
         }
         
-        const easedProgress = easeInOutCubic(progress)
+        const easedProgress = easeInOutQuart(progress)
         const currentPosition = startPosition + (distance * easedProgress)
         
         window.scrollTo(0, currentPosition)
@@ -114,6 +113,7 @@ export default function HomePage() {
         }
       }
       
+      // Start immediately
       requestAnimationFrame(smoothScroll)
     }
   }
