@@ -102,12 +102,12 @@ export default function HomePage() {
         const timeElapsed = currentTime - startTime
         const progress = Math.min(timeElapsed / duration, 1)
         
-        // Very smooth easing function
-        const easeInOutQuart = (t) => {
-          return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t
+        // Linear easing for consistent speed
+        const linearEase = (t) => {
+          return t
         }
         
-        const easedProgress = easeInOutQuart(progress)
+        const easedProgress = linearEase(progress)
         const currentPosition = startPosition + (distance * easedProgress)
         
         window.scrollTo(0, currentPosition)
