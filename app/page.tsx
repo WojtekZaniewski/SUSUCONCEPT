@@ -88,10 +88,33 @@ export default function HomePage() {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about-section')
     if (aboutSection) {
-      aboutSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      })
+      const startPosition = window.pageYOffset
+      const targetPosition = aboutSection.offsetTop
+      const distance = targetPosition - startPosition
+      const duration = 3000 // 3 seconds for very slow scroll
+      let startTime = null
+
+      const smoothScroll = (currentTime) => {
+        if (startTime === null) startTime = currentTime
+        const timeElapsed = currentTime - startTime
+        const progress = Math.min(timeElapsed / duration, 1)
+        
+        // Easing function for very smooth animation
+        const easeInOutCubic = (t) => {
+          return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+        }
+        
+        const easedProgress = easeInOutCubic(progress)
+        const currentPosition = startPosition + (distance * easedProgress)
+        
+        window.scrollTo(0, currentPosition)
+        
+        if (progress < 1) {
+          requestAnimationFrame(smoothScroll)
+        }
+      }
+      
+      requestAnimationFrame(smoothScroll)
     }
   }
 
@@ -99,6 +122,14 @@ export default function HomePage() {
     <>
       <style jsx global>{`
         html {
+          scroll-behavior: smooth;
+        }
+        
+        * {
+          scroll-behavior: smooth;
+        }
+        
+        body {
           scroll-behavior: smooth;
         }
         
