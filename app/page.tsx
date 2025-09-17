@@ -251,33 +251,33 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="min-h-screen bg-black flex flex-col">
         <div className="flex-1 flex flex-col">
-        <div className="relative flex-1 min-h-screen">
-          <div
-            className={`absolute text-center cursor-pointer transition-all duration-1500 ease-in-out ${
-              animationState === "initial" 
-                ? "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
-                : "top-12 left-1/2 transform -translate-x-1/2"
-            }`}
-            onClick={animationState !== "initial" ? handleLogoClick : undefined}
-          >
-            <h1
-              className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
-                animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
+          <div className="relative flex-1 min-h-screen">
+            <div
+              className={`absolute text-center cursor-pointer transition-all duration-1500 ease-in-out ${
+                animationState === "initial" 
+                  ? "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+                  : "top-12 left-1/2 transform -translate-x-1/2"
               }`}
-              style={{ fontFamily: "var(--font-pirata-one)" }}
+              onClick={animationState !== "initial" ? handleLogoClick : undefined}
             >
-              SUSU CONCEPT
-            </h1>
-            <p
-              className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
-                animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
-              }`}
-              style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-            >
-              ARCHITEKTURA WNĘTRZ
-            </p>
+              <h1
+                className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
+                  animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
+                }`}
+                style={{ fontFamily: "var(--font-pirata-one)" }}
+              >
+                SUSU CONCEPT
+              </h1>
+              <p
+                className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
+                  animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
+                }`}
+                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+              >
+                ARCHITEKTURA WNĘTRZ
+              </p>
+            </div>
           </div>
-        </div>
 
           <nav
             className={`transition-all duration-1000 ease-in-out delay-500 my-[-60px] px-3.5 ${
