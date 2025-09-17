@@ -1,9 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import Image from "next/image"
 
 export default function HomePage() {
-  const [animationState, setAnimationState] = useState<"initial" | "logo" | "complete">("initial")
+  const [animationState, setAnimationState] = useState<"initial" | "logo" | "complete" | "carousel">("initial")
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -14,9 +16,14 @@ export default function HomePage() {
       setAnimationState("complete")
     }, 4500) // increased delay for smoother transition
 
+    const timer3 = setTimeout(() => {
+      setAnimationState("carousel")
+    }, 6000) // carousel appears 1.5s after taskbar
+
     return () => {
       clearTimeout(timer1)
       clearTimeout(timer2)
+      clearTimeout(timer3)
     }
   }, [])
 
@@ -99,6 +106,61 @@ export default function HomePage() {
             </div>
           </div>
         </nav>
+
+        {/* Carousel Section */}
+        <div
+          className={`transition-all duration-2000 ease-in-out ${
+            animationState === "carousel" 
+              ? "opacity-100 translate-y-0" 
+              : "opacity-0 translate-y-8 pointer-events-none"
+          }`}
+        >
+          <div className="max-w-6xl mx-auto px-6 py-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                    <Image
+                      src="/3.png"
+                      alt="Interior Design 1"
+                      fill
+                      className="object-cover rounded-lg"
+                      priority
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                    <Image
+                      src="/2.jpg"
+                      alt="Interior Design 2"
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                    <Image
+                      src="/5.jpg"
+                      alt="Interior Design 3"
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+              <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+            </Carousel>
+          </div>
+        </div>
       </div>
     </main>
   )
