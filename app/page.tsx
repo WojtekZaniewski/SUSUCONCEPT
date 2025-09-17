@@ -77,7 +77,7 @@ export default function HomePage() {
 
         <nav
           className={`transition-all duration-1000 ease-in-out delay-500 my-[-60px] px-3.5 ${
-            animationState === "complete" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+            animationState === "complete" || animationState === "carousel" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
           }`}
         >
           <div className="grid grid-cols-3 items-center py-4 max-w-6xl mx-auto border-0 px-3">
@@ -144,7 +144,7 @@ export default function HomePage() {
                       src="/3.png"
                       alt="Interior Design 1"
                       fill
-                      className="object-cover rounded-lg"
+                      className="object-cover rounded-2xl"
                       priority
                     />
                   </div>
@@ -155,7 +155,7 @@ export default function HomePage() {
                       src="/2.jpg"
                       alt="Interior Design 2"
                       fill
-                      className="object-cover rounded-lg"
+                      className="object-cover rounded-2xl"
                     />
                   </div>
                 </CarouselItem>
@@ -165,7 +165,7 @@ export default function HomePage() {
                       src="/5.jpg"
                       alt="Interior Design 3"
                       fill
-                      className="object-cover rounded-lg"
+                      className="object-cover rounded-2xl"
                     />
                   </div>
                 </CarouselItem>
