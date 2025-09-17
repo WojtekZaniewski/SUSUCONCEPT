@@ -150,25 +150,32 @@ export default function HomePage() {
         }
         
         .text-bubble {
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(255, 215, 0, 0.08);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 2px solid rgba(255, 215, 0, 0.3);
           box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+            0 8px 32px rgba(255, 215, 0, 0.15),
+            0 0 40px rgba(255, 215, 0, 0.1),
+            inset 0 1px 0 rgba(255, 215, 0, 0.2),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
           position: relative;
           overflow: hidden;
-          animation: levitate 6s ease-in-out infinite;
+          animation: levitate 4s ease-in-out infinite;
         }
         
         @keyframes levitate {
           0%, 100% {
-            transform: translateY(0px);
+            transform: translateY(0px) rotateX(0deg);
+          }
+          25% {
+            transform: translateY(-6px) rotateX(1deg);
           }
           50% {
-            transform: translateY(-8px);
+            transform: translateY(-12px) rotateX(0deg);
+          }
+          75% {
+            transform: translateY(-6px) rotateX(-1deg);
           }
         }
         
@@ -182,21 +189,57 @@ export default function HomePage() {
           background: linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, 0.1),
+            rgba(255, 215, 0, 0.3),
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 215, 0, 0.3),
             transparent
           );
-          animation: shimmer 8s ease-in-out infinite;
+          animation: goldenShimmer 3s ease-in-out infinite;
         }
         
-        @keyframes shimmer {
+        .text-bubble::after {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: conic-gradient(
+            from 0deg,
+            transparent,
+            rgba(255, 215, 0, 0.4),
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 215, 0, 0.4),
+            transparent
+          );
+          border-radius: inherit;
+          animation: borderGlow 4s linear infinite;
+          z-index: -1;
+        }
+        
+        @keyframes goldenShimmer {
           0% {
             left: -100%;
+            opacity: 0;
           }
-          50% {
-            left: 100%;
+          10% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 1;
           }
           100% {
             left: 100%;
+            opacity: 0;
+          }
+        }
+        
+        @keyframes borderGlow {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
           }
         }
       `}</style>
@@ -400,19 +443,6 @@ export default function HomePage() {
                   transformacji codziennego życia.
                 </p>
               </div>
-            </div>
-            
-            {/* Liquid Glass Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="liquid-glass-button px-8 py-4 rounded-2xl text-white font-medium text-lg transition-all duration-300 hover:scale-105">
-                PORTFOLIO
-              </button>
-              <button className="liquid-glass-button px-8 py-4 rounded-2xl text-white font-medium text-lg transition-all duration-300 hover:scale-105">
-                KONTAKT
-              </button>
-              <button className="liquid-glass-button px-8 py-4 rounded-2xl text-white font-medium text-lg transition-all duration-300 hover:scale-105">
-                UMÓW WIZYTĘ
-              </button>
             </div>
           </div>
         </div>
