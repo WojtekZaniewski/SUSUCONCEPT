@@ -251,13 +251,13 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="min-h-screen bg-black flex flex-col">
         <div className="flex-1 flex flex-col">
-        <div
-          className={`transition-all duration-1500 ease-in-out ${
-            animationState === "initial" ? "flex items-center justify-center flex-1 min-h-screen" : "pt-12 flex justify-center"
-          }`}
-        >
+        <div className="relative flex-1 min-h-screen">
           <div
-            className="text-center cursor-pointer"
+            className={`absolute text-center cursor-pointer transition-all duration-1500 ease-in-out ${
+              animationState === "initial" 
+                ? "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+                : "top-12 left-1/2 transform -translate-x-1/2"
+            }`}
             onClick={animationState !== "initial" ? handleLogoClick : undefined}
           >
             <h1
