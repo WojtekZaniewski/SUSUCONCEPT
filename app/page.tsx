@@ -3,9 +3,12 @@
 import { useState, useEffect } from "react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
+import type { CarouselApi } from "@/components/ui/carousel"
 
 export default function HomePage() {
   const [animationState, setAnimationState] = useState<"initial" | "logo" | "complete" | "carousel">("initial")
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -26,6 +29,16 @@ export default function HomePage() {
       clearTimeout(timer3)
     }
   }, [])
+
+  useEffect(() => {
+    if (!api) return
+
+    setCurrent(api.selectedScrollSnap())
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+  }, [api])
 
   const handleLogoClick = () => {
     console.log("Navigate to main page")
@@ -109,23 +122,24 @@ export default function HomePage() {
 
         {/* Carousel Section */}
         <div
-          className={`transition-all duration-2000 ease-in-out ${
+          className={`transition-all duration-2000 ease-in-out mt-16 ${
             animationState === "carousel" 
               ? "opacity-100 translate-y-0" 
               : "opacity-0 translate-y-8 pointer-events-none"
           }`}
         >
-          <div className="max-w-6xl mx-auto px-6 py-12">
+          <div className="max-w-6xl mx-auto px-6 py-8">
             <Carousel
+              setApi={setApi}
               opts={{
                 align: "start",
-                loop: true,
+                loop: false,
               }}
               className="w-full"
             >
               <CarouselContent>
                 <CarouselItem>
-                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                  <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
                     <Image
                       src="/3.png"
                       alt="Interior Design 1"
@@ -136,7 +150,7 @@ export default function HomePage() {
                   </div>
                 </CarouselItem>
                 <CarouselItem>
-                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                  <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
                     <Image
                       src="/2.jpg"
                       alt="Interior Design 2"
@@ -146,7 +160,7 @@ export default function HomePage() {
                   </div>
                 </CarouselItem>
                 <CarouselItem>
-                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                  <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
                     <Image
                       src="/5.jpg"
                       alt="Interior Design 3"
@@ -159,6 +173,22 @@ export default function HomePage() {
               <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
               <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
             </Carousel>
+            
+            {/* Dot Indicators */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {[0, 1, 2].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => api?.scrollTo(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    current === index
+                      ? "bg-white scale-110"
+                      : "bg-white/30 hover:bg-white/50"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
