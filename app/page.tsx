@@ -4,12 +4,15 @@ import { useState, useEffect } from "react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
 import type { CarouselApi } from "@/components/ui/carousel"
+import { ChevronDown } from "lucide-react"
 
 export default function HomePage() {
   const [animationState, setAnimationState] = useState<"initial" | "logo" | "complete" | "carousel">("initial")
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
+  const [typingText, setTypingText] = useState("")
+  const [showArrow, setShowArrow] = useState(false)
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -54,8 +57,42 @@ export default function HomePage() {
     return () => clearInterval(interval)
   }, [api, animationState, isHovered])
 
+  // Typing effect
+  useEffect(() => {
+    if (animationState !== "carousel") return
+
+    const text = "poznaj nasze prace"
+    let index = 0
+
+    const timer = setTimeout(() => {
+      const typingInterval = setInterval(() => {
+        if (index < text.length) {
+          setTypingText(text.slice(0, index + 1))
+          index++
+        } else {
+          clearInterval(typingInterval)
+          setShowArrow(true)
+        }
+      }, 100) // 100ms per character
+
+      return () => clearInterval(typingInterval)
+    }, 2000) // Start typing 2 seconds after carousel appears
+
+    return () => clearTimeout(timer)
+  }, [animationState])
+
   const handleLogoClick = () => {
     console.log("Navigate to main page")
+  }
+
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about-section')
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
   }
 
   return (
@@ -207,9 +244,58 @@ export default function HomePage() {
                 />
               ))}
             </div>
+
+            {/* Typing Text */}
+            <div className="text-center mt-8">
+              <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
+                {typingText}
+                <span className="animate-pulse">|</span>
+              </h2>
+            </div>
+
+            {/* Down Arrow */}
+            {showArrow && (
+              <div className="flex justify-center mt-8">
+                <button
+                  onClick={scrollToAbout}
+                  className="text-white/70 hover:text-white transition-all duration-300 hover:scale-110 animate-bounce"
+                  aria-label="Scroll to about section"
+                >
+                  <ChevronDown size={32} />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      {/* About Section */}
+      <section id="about-section" className="min-h-screen bg-gray-900 py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center">
+            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-wider">
+              O NAS
+            </h2>
+            <div className="text-white/80 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+              <p className="mb-6">
+                Jesteśmy zespołem pasjonatów architektury wnętrz, którzy tworzą wyjątkowe przestrzenie 
+                łączące funkcjonalność z estetyką. Nasze projekty to nie tylko piękne wnętrza, ale przede 
+                wszystkim miejsca, w których ludzie czują się dobrze i komfortowo.
+              </p>
+              <p className="mb-6">
+                Specjalizujemy się w projektowaniu mieszkań, domów jednorodzinnych, biur i przestrzeni 
+                komercyjnych. Każdy projekt traktujemy indywidualnie, słuchając potrzeb naszych klientów 
+                i tworząc rozwiązania dopasowane do ich stylu życia.
+              </p>
+              <p>
+                Nasza filozofia opiera się na harmonii między formą a funkcją, nowoczesnymi trendami 
+                a ponadczasowymi rozwiązaniami. Wierzymy, że dobrze zaprojektowane wnętrze ma moc 
+                transformacji codziennego życia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
