@@ -92,9 +92,13 @@ export default function HomePage() {
       const targetPosition = aboutSection.offsetTop
       const distance = targetPosition - startPosition
       const duration = 4000 // 4 seconds for very slow scroll
-      const startTime = performance.now()
+      let startTime = null
 
       const smoothScroll = (currentTime) => {
+        if (startTime === null) {
+          startTime = currentTime
+        }
+        
         const timeElapsed = currentTime - startTime
         const progress = Math.min(timeElapsed / duration, 1)
         
@@ -113,7 +117,7 @@ export default function HomePage() {
         }
       }
       
-      // Start immediately
+      // Start immediately with next frame
       requestAnimationFrame(smoothScroll)
     }
   }
