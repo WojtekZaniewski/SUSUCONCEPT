@@ -15,6 +15,7 @@ export default function HomePage() {
   const [showArrow, setShowArrow] = useState(false)
   const [projectTypingText, setProjectTypingText] = useState("")
   const [showProjectContent, setShowProjectContent] = useState(false)
+  const [isProjectVisible, setIsProjectVisible] = useState(false)
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -83,8 +84,25 @@ export default function HomePage() {
     return () => clearTimeout(timer)
   }, [animationState])
 
-  // Project typing effect
+  // Scroll detection for project section
   useEffect(() => {
+    const handleScroll = () => {
+      const projectSection = document.getElementById('project-section')
+      if (projectSection) {
+        const rect = projectSection.getBoundingClientRect()
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0
+        setIsProjectVisible(isVisible)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Project typing effect - starts when section is visible
+  useEffect(() => {
+    if (!isProjectVisible) return
+
     const text = "nasz najnowszy projekt"
     let index = 0
 
@@ -100,10 +118,10 @@ export default function HomePage() {
       }, 80) // 80ms per character
 
       return () => clearInterval(typingInterval)
-    }, 1000) // Start typing 1 second after page load
+    }, 500) // Start typing 0.5 seconds after section becomes visible
 
     return () => clearTimeout(timer)
-  }, [])
+  }, [isProjectVisible])
 
   const handleLogoClick = () => {
     console.log("Navigate to main page")
@@ -441,9 +459,9 @@ export default function HomePage() {
       </section>
 
       {/* Project Section */}
-      <section className="min-h-screen bg-black py-20">
+      <section id="project-section" className="min-h-screen bg-black py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left side - Carousel */}
             <div className="order-2 lg:order-1">
               <Carousel
@@ -457,7 +475,7 @@ export default function HomePage() {
               >
                 <CarouselContent>
                   <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
                       <Image
                         src="/3.png"
                         alt="Project Interior 1"
@@ -468,7 +486,7 @@ export default function HomePage() {
                     </div>
                   </CarouselItem>
                   <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
                       <Image
                         src="/2.jpg"
                         alt="Project Interior 2"
@@ -478,7 +496,7 @@ export default function HomePage() {
                     </div>
                   </CarouselItem>
                   <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
                       <Image
                         src="/5.jpg"
                         alt="Project Interior 3"
@@ -494,36 +512,38 @@ export default function HomePage() {
             </div>
 
             {/* Right side - Text content */}
-            <div className="order-1 lg:order-2 space-y-8">
-              {/* Top right - Typing animation */}
-              <div className="text-right">
-                <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
-                  {projectTypingText}
-                  <span className="animate-pulse">|</span>
-                </h2>
-              </div>
-
-              {/* Middle right - Project description */}
-              {showProjectContent && (
-                <div className="text-bubble p-8 md:p-10 rounded-3xl">
-                  <div className="text-white/90 text-lg md:text-xl leading-relaxed">
-                    <p className="mb-6">
-                      Prezentujemy nasz najnowszy projekt - luksusowy apartament w centrum miasta, 
-                      gdzie nowoczesność spotyka się z elegancją. Przestrzeń została zaprojektowana 
-                      z myślą o komforcie i funkcjonalności.
-                    </p>
-                    <p className="mb-6">
-                      Projekt obejmuje kompleksowe urządzenie wnętrza z wykorzystaniem najwyższej 
-                      jakości materiałów i innowacyjnych rozwiązań. Każdy detal został przemyślany, 
-                      aby stworzyć harmonijną i inspirującą przestrzeń do życia.
-                    </p>
-                    <p>
-                      Rezultat to wyjątkowe wnętrze, które odzwierciedla osobowość właścicieli 
-                      i zapewnia komfort na najwyższym poziomie.
-                    </p>
-                  </div>
+            <div className="order-1 lg:order-2 flex flex-col justify-center min-h-[600px]">
+              <div className="space-y-8">
+                {/* Top right - Typing animation */}
+                <div className="text-right">
+                  <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
+                    {projectTypingText}
+                    <span className="animate-pulse">|</span>
+                  </h2>
                 </div>
-              )}
+
+                {/* Middle right - Project description */}
+                {showProjectContent && (
+                  <div className="text-bubble p-8 md:p-10 rounded-3xl">
+                    <div className="text-white/90 text-lg md:text-xl leading-relaxed">
+                      <p className="mb-6">
+                        Prezentujemy nasz najnowszy projekt - luksusowy apartament w centrum miasta, 
+                        gdzie nowoczesność spotyka się z elegancją. Przestrzeń została zaprojektowana 
+                        z myślą o komforcie i funkcjonalności.
+                      </p>
+                      <p className="mb-6">
+                        Projekt obejmuje kompleksowe urządzenie wnętrza z wykorzystaniem najwyższej 
+                        jakości materiałów i innowacyjnych rozwiązań. Każdy detal został przemyślany, 
+                        aby stworzyć harmonijną i inspirującą przestrzeń do życia.
+                      </p>
+                      <p>
+                        Rezultat to wyjątkowe wnętrze, które odzwierciedla osobowość właścicieli 
+                        i zapewnia komfort na najwyższym poziomie.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
