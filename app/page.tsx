@@ -251,33 +251,33 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="min-h-screen bg-black flex flex-col">
         <div className="flex-1 flex flex-col">
+        <div
+          className={`transition-all duration-1500 ease-in-out ${
+            animationState === "initial" ? "flex items-center justify-center flex-1 min-h-screen" : "pt-12 flex justify-center"
+          }`}
+        >
           <div
-            className={`transition-all duration-1500 ease-in-out ${
-              animationState === "initial" ? "flex items-center justify-center flex-1" : "pt-12 flex justify-center"
-            }`}
+            className="text-center cursor-pointer"
+            onClick={animationState !== "initial" ? handleLogoClick : undefined}
           >
-            <div
-              className="text-center cursor-pointer"
-              onClick={animationState !== "initial" ? handleLogoClick : undefined}
+            <h1
+              className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
+                animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
+              }`}
+              style={{ fontFamily: "var(--font-pirata-one)" }}
             >
-              <h1
-                className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
-                  animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
-                }`}
-                style={{ fontFamily: "var(--font-pirata-one)" }}
-              >
-                SUSU CONCEPT
-              </h1>
-              <p
-                className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
-                  animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
-                }`}
-                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-              >
-                ARCHITEKTURA WNĘTRZ
-              </p>
-            </div>
+              SUSU CONCEPT
+            </h1>
+            <p
+              className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
+                animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
+              }`}
+              style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+            >
+              ARCHITEKTURA WNĘTRZ
+            </p>
           </div>
+        </div>
 
           <nav
             className={`transition-all duration-1000 ease-in-out delay-500 my-[-60px] px-3.5 ${
