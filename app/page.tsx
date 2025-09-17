@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
 import type { CarouselApi } from "@/components/ui/carousel"
-import { ChevronDown } from "lucide-react"
 
 export default function HomePage() {
   const [animationState, setAnimationState] = useState<"initial" | "logo" | "complete" | "carousel">("initial")
@@ -12,7 +11,6 @@ export default function HomePage() {
   const [current, setCurrent] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const [typingText, setTypingText] = useState("")
-  const [showArrow, setShowArrow] = useState(false)
   const [projectTypingText, setProjectTypingText] = useState("")
   const [showProjectContent, setShowProjectContent] = useState(false)
   const [isProjectVisible, setIsProjectVisible] = useState(false)
@@ -74,7 +72,6 @@ export default function HomePage() {
           index++
         } else {
           clearInterval(typingInterval)
-          setShowArrow(true)
         }
       }, 100) // 100ms per character
 
@@ -127,42 +124,6 @@ export default function HomePage() {
     console.log("Navigate to main page")
   }
 
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about-section')
-    if (aboutSection) {
-      const startPosition = window.pageYOffset
-      const targetPosition = aboutSection.offsetTop
-      const distance = targetPosition - startPosition
-      const duration = 4000 // 4 seconds for very slow scroll
-      let startTime = null
-
-      const smoothScroll = (currentTime) => {
-        if (startTime === null) {
-          startTime = currentTime
-        }
-        
-        const timeElapsed = currentTime - startTime
-        const progress = Math.min(timeElapsed / duration, 1)
-        
-        // Linear easing for consistent speed
-        const linearEase = (t) => {
-          return t
-        }
-        
-        const easedProgress = linearEase(progress)
-        const currentPosition = startPosition + (distance * easedProgress)
-        
-        window.scrollTo(0, currentPosition)
-        
-        if (progress < 1) {
-          requestAnimationFrame(smoothScroll)
-        }
-      }
-      
-      // Start immediately with next frame
-      requestAnimationFrame(smoothScroll)
-    }
-  }
 
   return (
     <>
@@ -441,18 +402,6 @@ export default function HomePage() {
                 </h2>
               </div>
 
-              {/* Down Arrow */}
-              {showArrow && (
-                <div className="flex justify-center mt-8">
-                  <button
-                    onClick={scrollToAbout}
-                    className="text-white/70 hover:text-white transition-all duration-300 hover:scale-110 animate-bounce"
-                    aria-label="Scroll to about section"
-                  >
-                    <ChevronDown size={32} />
-                  </button>
-                </div>
-              )}
             </div>
           </div>
         </div>
