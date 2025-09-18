@@ -327,29 +327,29 @@ export default function HomePage() {
       </section>
 
       {/* Carousel Section - Positioned absolutely under taskbar */}
-      <div
+        <div
         className={`absolute top-32 left-0 right-0 bg-black transition-all duration-2000 ease-in-out ${
-          animationState === "carousel" 
-            ? "opacity-100 translate-y-0" 
-            : "opacity-0 translate-y-8 pointer-events-none"
-        }`}
-      >
-        <div className="w-full px-6 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+            animationState === "carousel" 
+              ? "opacity-100 translate-y-0" 
+              : "opacity-0 translate-y-8 pointer-events-none"
+          }`}
+        >
+        <div className="w-full px-4 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center w-full">
             {/* Left side - Title and Description */}
             <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
-              <div className="w-full max-w-lg">
+              <div className="w-full max-w-2xl">
                 {/* Title */}
-                <div className="mb-8">
-                  <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light tracking-wider text-center lg:text-left">
+                <div className="mb-12">
+                  <h2 className="text-white text-5xl md:text-6xl lg:text-7xl font-light tracking-wider text-center lg:text-left">
                     {typingText}
                     <span className="animate-pulse">|</span>
                   </h2>
                 </div>
                 
                 {/* Description */}
-                <div className="text-bubble p-10 rounded-3xl">
-                  <p className="text-white/90 text-xl md:text-2xl leading-relaxed text-center lg:text-left">
+                <div className="text-bubble p-12 rounded-3xl">
+                  <p className="text-white/90 text-2xl md:text-3xl lg:text-4xl leading-relaxed text-center lg:text-left">
                     Tworzymy wyjątkowe przestrzenie, które łączą funkcjonalność z estetyką. 
                     Każdy projekt to indywidualne podejście do potrzeb naszych klientów, 
                     tworząc rozwiązania dopasowane do ich stylu życia.
@@ -360,7 +360,7 @@ export default function HomePage() {
 
             {/* Right side - Bigger Carousel */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
-              <div className="w-full max-w-4xl">
+              <div className="w-full max-w-6xl">
             <Carousel
                   setApi={setApi}
               opts={{
@@ -375,35 +375,35 @@ export default function HomePage() {
             >
               <CarouselContent>
                 <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[450px]">
-                      <Image
-                        src="/3.png"
-                        alt="Interior Design 1"
-                        fill
+                    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] xl:h-[700px]">
+                    <Image
+                      src="/3.png"
+                      alt="Interior Design 1"
+                      fill
                         className="object-cover rounded-3xl"
-                        priority
-                      />
-                    </div>
-                  </CarouselItem>
-                  <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[450px]">
-                      <Image
-                        src="/2.jpg"
-                        alt="Interior Design 2"
-                        fill
+                      priority
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] xl:h-[700px]">
+                    <Image
+                      src="/2.jpg"
+                      alt="Interior Design 2"
+                      fill
                         className="object-cover rounded-3xl"
-                      />
-                    </div>
-                  </CarouselItem>
-                  <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[450px]">
-                      <Image
-                        src="/5.jpg"
-                        alt="Interior Design 3"
-                        fill
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] xl:h-[700px]">
+                    <Image
+                      src="/5.jpg"
+                      alt="Interior Design 3"
+                      fill
                         className="object-cover rounded-3xl"
-                      />
-                    </div>
+                    />
+                  </div>
                 </CarouselItem>
               </CarouselContent>
               <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
@@ -411,12 +411,12 @@ export default function HomePage() {
             </Carousel>
                 
                 {/* Dot Indicators */}
-                <div className="flex justify-center mt-8 space-x-3">
+                <div className="flex justify-center mt-12 space-x-4">
                   {[0, 1, 2].map((index) => (
                     <button
                       key={index}
                       onClick={() => api?.scrollTo(index)}
-                      className={`w-4 h-4 rounded-full transition-all duration-500 ${
+                      className={`w-6 h-6 rounded-full transition-all duration-500 ${
                         current === index
                           ? "bg-white scale-110"
                           : "bg-white/30 hover:bg-white/50"
