@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
 import type { CarouselApi } from "@/components/ui/carousel"
@@ -129,7 +129,7 @@ export default function HomePage() {
   }
 
   return (
-    <>
+    <React.Fragment>
       <style jsx global>{`
         html {
           scroll-behavior: smooth;
@@ -692,6 +692,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-    </>
+    </React.Fragment>
   )
 }
