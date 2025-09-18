@@ -129,7 +129,242 @@ export default function HomePage() {
 
   return (
     <>
-      <p>Test component to check syntax</p>
+      <style jsx global>{`
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        * {
+          scroll-behavior: smooth;
+        }
+        
+        body {
+          scroll-behavior: smooth;
+        }
+        
+        .liquid-glass-button {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .liquid-glass-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          );
+          transition: left 0.6s ease;
+        }
+        
+        .liquid-glass-button:hover::before {
+          left: 100%;
+        }
+        
+        .liquid-glass-button:hover {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.3);
+          box-shadow: 
+            0 12px 40px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          transform: translateY(-2px);
+        }
+        
+        .liquid-glass-button:active {
+          transform: translateY(0);
+        }
+        
+        .text-bubble {
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 248, 220, 0.15);
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.2),
+            0 0 20px rgba(255, 248, 220, 0.05),
+            inset 0 1px 0 rgba(255, 248, 220, 0.08),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+          position: relative;
+          overflow: hidden;
+          animation: levitate 6s ease-in-out infinite;
+        }
+        
+        @keyframes levitate {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+        
+        .text-bubble::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 248, 220, 0.1),
+            transparent
+          );
+          animation: gentleShimmer 8s ease-in-out infinite;
+        }
+        
+        @keyframes gentleShimmer {
+          0% {
+            left: -100%;
+            opacity: 0;
+          }
+          20% {
+            opacity: 0.3;
+          }
+          80% {
+            opacity: 0.3;
+          }
+          100% {
+            left: 100%;
+            opacity: 0;
+          }
+        }
+      `}</style>
+      
+      {/* Hero Section */}
+      <section className="min-h-screen bg-black flex flex-col relative">
+        <div className="flex-1 flex flex-col">
+          <div className="relative flex-1 min-h-screen">
+            <div
+              className={`absolute text-center cursor-pointer transition-all duration-1500 ease-in-out ${
+                animationState === "initial" 
+                  ? "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+                  : "top-12 left-1/2 transform -translate-x-1/2"
+              }`}
+              onClick={animationState !== "initial" ? handleLogoClick : undefined}
+            >
+              <h1
+                className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
+                  animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
+                }`}
+                style={{ fontFamily: "var(--font-pirata-one)" }}
+              >
+                ART CONCEPT
+              </h1>
+              <p
+                className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
+                  animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
+                }`}
+                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+              >
+                ARCHITEKTURA WNĘTRZ
+              </p>
+            </div>
+          </div>
+
+          <nav
+            className={`absolute top-12 left-0 right-0 transition-all duration-1000 ease-in-out delay-500 px-3.5 ${
+              animationState === "complete" || animationState === "carousel" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+            }`}
+          >
+            <div className="grid grid-cols-3 items-center py-4 max-w-6xl mx-auto border-0 px-3">
+              {/* Left section: Portfolio and O Nas */}
+              <div className="flex space-x-8 justify-end">
+                <button
+                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  onClick={() => {
+                    const projectSection = document.getElementById('project-section');
+                    if (projectSection) {
+                      projectSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  PORTFOLIO
+                </button>
+                <button
+                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  O NAS
+                </button>
+              </div>
+
+              {/* Center logo space */}
+              <div className="flex justify-center">
+                <div className="w-48"></div>
+              </div>
+
+              {/* Right section: Kontakt and Umów Wizytę */}
+              <div className="flex space-x-8 justify-start">
+                <button
+                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  KONTAKT
+                </button>
+                <button
+                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  UMÓW WIZYTĘ
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>
+
+      {/* Mini Footer */}
+      <footer className="bg-black py-8 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <div className="text-white/60 text-sm">
+              aerodigital
+            </div>
+            <div className="text-white/60 text-sm">
+              art concept
+            </div>
+            <div className="text-white/60 text-sm">
+              2025
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
