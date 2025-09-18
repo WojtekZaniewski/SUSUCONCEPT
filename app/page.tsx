@@ -334,11 +334,11 @@ export default function HomePage() {
             : "opacity-0 translate-y-8 pointer-events-none"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="w-full px-6 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
             {/* Left side - Title and Description */}
             <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
-              <div className="max-w-lg">
+              <div className="w-full max-w-lg">
                 {/* Title */}
                 <div className="mb-8">
                   <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light tracking-wider text-center lg:text-left">
