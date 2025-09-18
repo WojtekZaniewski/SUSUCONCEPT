@@ -249,7 +249,7 @@ export default function HomePage() {
         }
       `}</style>
       {/* Hero Section */}
-      <section className="min-h-screen bg-black flex flex-col">
+      <section className="min-h-screen bg-black flex flex-col relative">
         <div className="flex-1 flex flex-col">
           <div className="relative flex-1 min-h-screen">
             <div
@@ -326,7 +326,7 @@ export default function HomePage() {
 
           {/* Carousel Section */}
           <div
-            className={`transition-all duration-2000 ease-in-out mt-16 ${
+            className={`transition-all duration-2000 ease-in-out pt-20 ${
               animationState === "carousel" 
                 ? "opacity-100 translate-y-0" 
                 : "opacity-0 translate-y-8 pointer-events-none"
