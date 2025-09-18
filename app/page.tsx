@@ -335,23 +335,26 @@ export default function HomePage() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-12">
-          {/* Centered Title */}
-          <div className="text-center mb-16">
-            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-wider">
-              {typingText}
-              <span className="animate-pulse">|</span>
-            </h2>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left side - Description */}
+            {/* Left side - Title and Description */}
             <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
-              <div className="text-bubble p-10 rounded-3xl max-w-lg">
-                <p className="text-white/90 text-xl md:text-2xl leading-relaxed text-center lg:text-left">
-                  Tworzymy wyjątkowe przestrzenie, które łączą funkcjonalność z estetyką. 
-                  Każdy projekt to indywidualne podejście do potrzeb naszych klientów, 
-                  tworząc rozwiązania dopasowane do ich stylu życia.
-                </p>
+              <div className="max-w-lg">
+                {/* Title */}
+                <div className="mb-8">
+                  <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light tracking-wider text-center lg:text-left">
+                    {typingText}
+                    <span className="animate-pulse">|</span>
+                  </h2>
+                </div>
+                
+                {/* Description */}
+                <div className="text-bubble p-10 rounded-3xl">
+                  <p className="text-white/90 text-xl md:text-2xl leading-relaxed text-center lg:text-left">
+                    Tworzymy wyjątkowe przestrzenie, które łączą funkcjonalność z estetyką. 
+                    Każdy projekt to indywidualne podejście do potrzeb naszych klientów, 
+                    tworząc rozwiązania dopasowane do ich stylu życia.
+                  </p>
+                </div>
               </div>
             </div>
 
