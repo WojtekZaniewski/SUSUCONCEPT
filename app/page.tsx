@@ -665,7 +665,7 @@ export default function HomePage() {
             <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
               <div className="w-full max-w-lg">
                 {/* Title */}
-                <div className="mb-4 md:mb-6">
+                <div className="mb-6 md:mb-8">
                   <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-wider text-center lg:text-left leading-tight">
                     <span className="inline-block whitespace-nowrap">
                       {typingText}
