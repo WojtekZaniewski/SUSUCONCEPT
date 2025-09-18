@@ -128,7 +128,6 @@ export default function HomePage() {
     console.log("Navigate to main page")
   }
 
-
   return (
     <>
       <style jsx global>{`
