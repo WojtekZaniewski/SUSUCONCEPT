@@ -290,12 +290,24 @@ export default function HomePage() {
               <button
                 className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
                 style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  onClick={() => {
+                    const projectSection = document.getElementById('project-section');
+                    if (projectSection) {
+                      projectSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
               >
                 PORTFOLIO
               </button>
               <button
                 className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
                 style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
               >
                 O NAS
               </button>
@@ -311,12 +323,24 @@ export default function HomePage() {
               <button
                 className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
                 style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
               >
                 KONTAKT
               </button>
               <button
                 className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
                 style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact-section');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
               >
                 UMÓW WIZYTĘ
               </button>
@@ -334,22 +358,22 @@ export default function HomePage() {
               : "opacity-0 translate-y-8 pointer-events-none"
           }`}
         >
-        <div className="w-full px-6 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+        <div className="w-full px-4 md:px-6 py-8 md:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center max-w-7xl mx-auto">
             {/* Left side - Title and Description */}
             <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
               <div className="w-full max-w-lg">
                 {/* Title */}
-                <div className="mb-8">
-                  <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-wider text-center lg:text-left">
+                <div className="mb-6 md:mb-8">
+                  <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wider text-center lg:text-left">
                     {typingText}
                     <span className="animate-pulse">|</span>
                   </h2>
                 </div>
                 
                 {/* Description */}
-                <div className="text-bubble p-10 rounded-3xl">
-                  <p className="text-white/90 text-xl md:text-2xl leading-relaxed text-center lg:text-left">
+                <div className="text-bubble p-6 md:p-10 rounded-3xl">
+                  <p className="text-white/90 text-lg sm:text-xl md:text-2xl leading-relaxed text-center lg:text-left">
                     Tworzymy wyjątkowe przestrzenie, które łączą funkcjonalność z estetyką. 
                     Każdy projekt to indywidualne podejście do potrzeb naszych klientów, 
                     tworząc rozwiązania dopasowane do ich stylu życia.
@@ -375,35 +399,35 @@ export default function HomePage() {
             >
               <CarouselContent>
                 <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[450px] lg:h-[500px]">
-                      <Image
-                        src="/3.png"
-                        alt="Interior Design 1"
-                        fill
+                    <div className="relative w-full h-64 sm:h-80 md:h-[450px] lg:h-[500px]">
+                    <Image
+                      src="/3.png"
+                      alt="Interior Design 1"
+                      fill
                         className="object-cover rounded-3xl"
-                        priority
-                      />
-                    </div>
-                  </CarouselItem>
-                  <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[450px] lg:h-[500px]">
-                      <Image
-                        src="/2.jpg"
-                        alt="Interior Design 2"
-                        fill
+                      priority
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div className="relative w-full h-64 sm:h-80 md:h-[450px] lg:h-[500px]">
+                    <Image
+                      src="/2.jpg"
+                      alt="Interior Design 2"
+                      fill
                         className="object-cover rounded-3xl"
-                      />
-                    </div>
-                  </CarouselItem>
-                  <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[450px] lg:h-[500px]">
-                      <Image
-                        src="/5.jpg"
-                        alt="Interior Design 3"
-                        fill
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div className="relative w-full h-64 sm:h-80 md:h-[450px] lg:h-[500px]">
+                    <Image
+                      src="/5.jpg"
+                      alt="Interior Design 3"
+                      fill
                         className="object-cover rounded-3xl"
-                      />
-                    </div>
+                    />
+                  </div>
                 </CarouselItem>
               </CarouselContent>
               <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
@@ -427,6 +451,15 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Mouse Scroll Indicator */}
+        <div className="flex justify-center mt-8 md:mt-16">
+          <div className="animate-bounce">
+            <svg className="w-6 h-6 md:w-8 md:h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
           </div>
         </div>
       </div>
@@ -523,10 +556,11 @@ export default function HomePage() {
       {/* Contact Section */}
       <section id="contact-section" className="min-h-screen bg-black py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-wider">
+          <div className="text-center mb-16">
+            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-wider">
               UMÓW WIZYTĘ
             </h2>
+          </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               {/* Left side - Contact info */}
