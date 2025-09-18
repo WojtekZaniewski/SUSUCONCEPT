@@ -250,7 +250,7 @@ export default function HomePage() {
       `}</style>
       {/* Hero Section */}
       <section className="min-h-screen bg-black flex flex-col relative">
-      <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col">
           <div className="relative flex-1 min-h-screen">
             <div
               className={`absolute text-center cursor-pointer transition-all duration-1500 ease-in-out ${
