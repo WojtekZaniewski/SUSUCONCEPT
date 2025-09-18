@@ -326,15 +326,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Carousel Section - Moved outside hero section */}
+      {/* Carousel Section - Positioned absolutely under taskbar */}
       <div
-        className={`transition-all duration-2000 ease-in-out ${
+        className={`absolute top-24 left-0 right-0 bg-black transition-all duration-2000 ease-in-out ${
           animationState === "carousel" 
             ? "opacity-100 translate-y-0" 
             : "opacity-0 translate-y-8 pointer-events-none"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6 py-8">
           <Carousel
             setApi={setApi}
             opts={{
