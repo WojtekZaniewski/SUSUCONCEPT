@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Image from "next/image"
 import type { CarouselApi } from "@/components/ui/carousel"
@@ -112,8 +112,6 @@ export default function HomePage() {
           clearInterval(typingInterval)
         }
       }, 80) // 80ms per character
-
-      return () => clearInterval(typingInterval)
     }, 500) // Start typing 0.5 seconds after section becomes visible
 
     return () => clearTimeout(timer)
