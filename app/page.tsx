@@ -334,78 +334,95 @@ export default function HomePage() {
             : "opacity-0 translate-y-8 pointer-events-none"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <Carousel
-            setApi={setApi}
-            opts={{
-              align: "start",
-              loop: false,
-              duration: 20, // Slower transition duration (default is 10)
-              dragFree: false,
-            }}
-            className="w-full"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <CarouselContent>
-              <CarouselItem>
-                <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                  <Image
-                    src="/3.png"
-                    alt="Interior Design 1"
-                    fill
-                    className="object-cover rounded-2xl"
-                    priority
-                  />
-                </div>
-              </CarouselItem>
-              <CarouselItem>
-                <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                  <Image
-                    src="/2.jpg"
-                    alt="Interior Design 2"
-                    fill
-                    className="object-cover rounded-2xl"
-                  />
-                </div>
-              </CarouselItem>
-              <CarouselItem>
-                <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                  <Image
-                    src="/5.jpg"
-                    alt="Interior Design 3"
-                    fill
-                    className="object-cover rounded-2xl"
-                  />
-                </div>
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
-            <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
-          </Carousel>
-          
-          {/* Dot Indicators */}
-          <div className="flex justify-center mt-6 space-x-2">
-            {[0, 1, 2].map((index) => (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                  current === index
-                    ? "bg-white scale-110"
-                    : "bg-white/30 hover:bg-white/50"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Text content */}
+            <div className="order-2 lg:order-1">
+              {/* Typing Text */}
+              <div className="mb-8">
+                <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light tracking-wider">
+                  {typingText}
+                  <span className="animate-pulse">|</span>
+                </h2>
+              </div>
+              
+              {/* Description */}
+              <div className="text-bubble p-8 rounded-3xl">
+                <p className="text-white/90 text-lg md:text-xl leading-relaxed">
+                  Tworzymy wyjątkowe przestrzenie, które łączą funkcjonalność z estetyką. 
+                  Każdy projekt to indywidualne podejście do potrzeb naszych klientów, 
+                  tworząc rozwiązania dopasowane do ich stylu życia.
+                </p>
+              </div>
+            </div>
 
-          {/* Typing Text */}
-          <div className="text-center mt-8">
-            <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-light tracking-wider">
-              {typingText}
-              <span className="animate-pulse">|</span>
-            </h2>
+            {/* Right side - Carousel */}
+            <div className="order-1 lg:order-2">
+              <Carousel
+                setApi={setApi}
+                opts={{
+                  align: "start",
+                  loop: false,
+                  duration: 20,
+                  dragFree: false,
+                }}
+                className="w-full"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <CarouselContent>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/3.png"
+                        alt="Interior Design 1"
+                        fill
+                        className="object-cover rounded-2xl"
+                        priority
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/2.jpg"
+                        alt="Interior Design 2"
+                        fill
+                        className="object-cover rounded-2xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
+                      <Image
+                        src="/5.jpg"
+                        alt="Interior Design 3"
+                        fill
+                        className="object-cover rounded-2xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+                <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+              </Carousel>
+              
+              {/* Dot Indicators */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {[0, 1, 2].map((index) => (
+                  <button
+                    key={index}
+                    onClick={() => api?.scrollTo(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                      current === index
+                        ? "bg-white scale-110"
+                        : "bg-white/30 hover:bg-white/50"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
