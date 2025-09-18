@@ -129,7 +129,7 @@ export default function HomePage() {
   }
 
   return (
-    <React.Fragment>
+    <>
       <style jsx global>{`
         html {
           scroll-behavior: smooth;
@@ -692,6 +692,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-    </React.Fragment>
+    </>
   )
 }
