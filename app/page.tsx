@@ -666,9 +666,11 @@ export default function HomePage() {
               <div className="w-full max-w-lg">
                 {/* Title */}
                 <div className="mb-6 md:mb-8">
-                  <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wider text-center lg:text-left">
-                    {typingText}
-                    <span className="animate-pulse">|</span>
+                  <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wider text-center lg:text-left leading-tight">
+                    <span className="inline-block whitespace-nowrap">
+                      {typingText}
+                      <span className="animate-pulse">|</span>
+                    </span>
                   </h2>
                 </div>
                 
