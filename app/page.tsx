@@ -323,15 +323,16 @@ export default function HomePage() {
               </div>
             </div>
           </nav>
+        </div>
 
-          {/* Carousel Section */}
-          <div
-            className={`transition-all duration-2000 ease-in-out ${
-              animationState === "carousel" 
-                ? "opacity-100 translate-y-0" 
-                : "opacity-0 translate-y-8 pointer-events-none"
-            }`}
-          >
+        {/* Carousel Section - Moved outside flex container */}
+        <div
+          className={`transition-all duration-2000 ease-in-out ${
+            animationState === "carousel" 
+              ? "opacity-100 translate-y-0" 
+              : "opacity-0 translate-y-8 pointer-events-none"
+          }`}
+        >
             <div className="max-w-6xl mx-auto px-6">
               <Carousel
                 setApi={setApi}
