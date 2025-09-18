@@ -334,19 +334,19 @@ export default function HomePage() {
             : "opacity-0 translate-y-8 pointer-events-none"
         }`}
       >
-            <div className="max-w-6xl mx-auto px-6">
-              <Carousel
-                setApi={setApi}
-                opts={{
-                  align: "start",
-                  loop: false,
-                  duration: 20, // Slower transition duration (default is 10)
-                  dragFree: false,
-                }}
-                className="w-full"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
+        <div className="max-w-6xl mx-auto px-6">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "start",
+              loop: false,
+              duration: 20, // Slower transition duration (default is 10)
+              dragFree: false,
+            }}
+            className="w-full"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
                 <CarouselContent>
                   <CarouselItem>
                     <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
