@@ -326,13 +326,13 @@ export default function HomePage() {
 
           {/* Carousel Section */}
           <div
-            className={`transition-all duration-2000 ease-in-out pt-4 ${
+            className={`transition-all duration-2000 ease-in-out ${
               animationState === "carousel" 
                 ? "opacity-100 translate-y-0" 
                 : "opacity-0 translate-y-8 pointer-events-none"
             }`}
           >
-            <div className="max-w-6xl mx-auto px-6 py-8">
+            <div className="max-w-6xl mx-auto px-6">
               <Carousel
                 setApi={setApi}
                 opts={{
