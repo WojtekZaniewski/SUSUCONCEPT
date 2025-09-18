@@ -327,13 +327,13 @@ export default function HomePage() {
       </section>
 
       {/* Carousel Section - Positioned absolutely under taskbar */}
-        <div
-        className={`absolute top-24 left-0 right-0 bg-black transition-all duration-2000 ease-in-out ${
-            animationState === "carousel" 
-              ? "opacity-100 translate-y-0" 
-              : "opacity-0 translate-y-8 pointer-events-none"
-          }`}
-        >
+      <div
+        className={`absolute top-32 left-0 right-0 bg-black transition-all duration-2000 ease-in-out ${
+          animationState === "carousel" 
+            ? "opacity-100 translate-y-0" 
+            : "opacity-0 translate-y-8 pointer-events-none"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 py-12">
           {/* Centered Title */}
           <div className="text-center mb-16">
@@ -357,7 +357,7 @@ export default function HomePage() {
 
             {/* Right side - Bigger Carousel */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
-              <div className="w-full max-w-2xl">
+              <div className="w-full max-w-4xl">
             <Carousel
                   setApi={setApi}
               opts={{
@@ -372,35 +372,35 @@ export default function HomePage() {
             >
               <CarouselContent>
                 <CarouselItem>
-                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
-                    <Image
-                      src="/3.png"
-                      alt="Interior Design 1"
-                      fill
-                          className="object-cover rounded-3xl"
-                      priority
-                    />
-                  </div>
-                </CarouselItem>
-                <CarouselItem>
-                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
-                    <Image
-                      src="/2.jpg"
-                      alt="Interior Design 2"
-                      fill
-                          className="object-cover rounded-3xl"
-                    />
-                  </div>
-                </CarouselItem>
-                <CarouselItem>
-                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
-                    <Image
-                      src="/5.jpg"
-                      alt="Interior Design 3"
-                      fill
-                          className="object-cover rounded-3xl"
-                    />
-                  </div>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[450px]">
+                      <Image
+                        src="/3.png"
+                        alt="Interior Design 1"
+                        fill
+                        className="object-cover rounded-3xl"
+                        priority
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[450px]">
+                      <Image
+                        src="/2.jpg"
+                        alt="Interior Design 2"
+                        fill
+                        className="object-cover rounded-3xl"
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full h-80 md:h-[400px] lg:h-[450px]">
+                      <Image
+                        src="/5.jpg"
+                        alt="Interior Design 3"
+                        fill
+                        className="object-cover rounded-3xl"
+                      />
+                    </div>
                 </CarouselItem>
               </CarouselContent>
               <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
