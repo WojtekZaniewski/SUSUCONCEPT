@@ -326,7 +326,7 @@ export default function HomePage() {
 
           {/* Carousel Section */}
           <div
-            className={`transition-all duration-2000 ease-in-out pt-20 ${
+            className={`transition-all duration-2000 ease-in-out pt-4 ${
               animationState === "carousel" 
                 ? "opacity-100 translate-y-0" 
                 : "opacity-0 translate-y-8 pointer-events-none"
