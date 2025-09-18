@@ -250,7 +250,7 @@ export default function HomePage() {
       `}</style>
       {/* Hero Section */}
       <section className="min-h-screen bg-black flex flex-col relative">
-        <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col">
           <div className="relative flex-1 min-h-screen">
             <div
               className={`absolute text-center cursor-pointer transition-all duration-1500 ease-in-out ${
@@ -258,97 +258,96 @@ export default function HomePage() {
                   ? "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
                   : "top-12 left-1/2 transform -translate-x-1/2"
               }`}
-              onClick={animationState !== "initial" ? handleLogoClick : undefined}
+            onClick={animationState !== "initial" ? handleLogoClick : undefined}
+          >
+            <h1
+              className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
+                animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
+              }`}
+              style={{ fontFamily: "var(--font-pirata-one)" }}
             >
-              <h1
-                className={`text-white font-bold tracking-wider transition-all duration-1500 ease-in-out ${
-                  animationState === "initial" ? "text-6xl md:text-8xl lg:text-9xl mb-4" : "text-2xl md:text-3xl mb-1"
-                }`}
-                style={{ fontFamily: "var(--font-pirata-one)" }}
-              >
-                SUSU CONCEPT
-              </h1>
-              <p
-                className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
-                  animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
-                }`}
-                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-              >
-                ARCHITEKTURA WNĘTRZ
-              </p>
-            </div>
+              SUSU CONCEPT
+            </h1>
+            <p
+              className={`text-white tracking-widest transition-all duration-1500 ease-in-out ${
+                animationState === "initial" ? "text-lg md:text-xl lg:text-2xl" : "text-xs md:text-sm"
+              }`}
+              style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+            >
+              ARCHITEKTURA WNĘTRZ
+            </p>
           </div>
+        </div>
 
-          <nav
+        <nav
             className={`absolute top-12 left-0 right-0 transition-all duration-1000 ease-in-out delay-500 px-3.5 ${
               animationState === "complete" || animationState === "carousel" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-            }`}
-          >
-            <div className="grid grid-cols-3 items-center py-4 max-w-6xl mx-auto border-0 px-3">
-              {/* Left section: Portfolio and O Nas */}
-              <div className="flex space-x-8 justify-end">
-                <button
-                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
-                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-                >
-                  PORTFOLIO
-                </button>
-                <button
-                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
-                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-                >
-                  O NAS
-                </button>
-              </div>
-
-              {/* Center logo space */}
-              <div className="flex justify-center">
-                <div className="w-48"></div>
-              </div>
-
-              {/* Right section: Kontakt and Umów Wizytę */}
-              <div className="flex space-x-8 justify-start">
-                <button
-                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
-                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-                >
-                  KONTAKT
-                </button>
-                <button
-                  className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
-                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-                >
-                  UMÓW WIZYTĘ
-                </button>
-              </div>
+          }`}
+        >
+          <div className="grid grid-cols-3 items-center py-4 max-w-6xl mx-auto border-0 px-3">
+            {/* Left section: Portfolio and O Nas */}
+            <div className="flex space-x-8 justify-end">
+              <button
+                className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+              >
+                PORTFOLIO
+              </button>
+              <button
+                className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+              >
+                O NAS
+              </button>
             </div>
-          </nav>
+
+            {/* Center logo space */}
+            <div className="flex justify-center">
+              <div className="w-48"></div>
+            </div>
+
+            {/* Right section: Kontakt and Umów Wizytę */}
+            <div className="flex space-x-8 justify-start">
+              <button
+                className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+              >
+                KONTAKT
+              </button>
+              <button
+                className="text-white text-lg md:text-xl tracking-wider hover:opacity-70 transition-opacity font-bold"
+                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+              >
+                UMÓW WIZYTĘ
+              </button>
+            </div>
+          </div>
+        </nav>
         </div>
       </section>
 
       {/* Carousel Section - Positioned absolutely under taskbar */}
-      <div
+        <div
         className={`absolute top-24 left-0 right-0 bg-black transition-all duration-2000 ease-in-out ${
-          animationState === "carousel" 
-            ? "opacity-100 translate-y-0" 
-            : "opacity-0 translate-y-8 pointer-events-none"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Text content */}
-            <div className="order-2 lg:order-1">
-              {/* Typing Text */}
-              <div className="mb-8">
-                <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light tracking-wider">
-                  {typingText}
-                  <span className="animate-pulse">|</span>
-                </h2>
-              </div>
-              
-              {/* Description */}
-              <div className="text-bubble p-8 rounded-3xl">
-                <p className="text-white/90 text-lg md:text-xl leading-relaxed">
+            animationState === "carousel" 
+              ? "opacity-100 translate-y-0" 
+              : "opacity-0 translate-y-8 pointer-events-none"
+          }`}
+        >
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          {/* Centered Title */}
+          <div className="text-center mb-16">
+            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-wider">
+              {typingText}
+              <span className="animate-pulse">|</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left side - Description */}
+            <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
+              <div className="text-bubble p-10 rounded-3xl max-w-lg">
+                <p className="text-white/90 text-xl md:text-2xl leading-relaxed text-center lg:text-left">
                   Tworzymy wyjątkowe przestrzenie, które łączą funkcjonalność z estetyką. 
                   Każdy projekt to indywidualne podejście do potrzeb naszych klientów, 
                   tworząc rozwiązania dopasowane do ich stylu życia.
@@ -356,71 +355,73 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right side - Carousel */}
-            <div className="order-1 lg:order-2">
-              <Carousel
-                setApi={setApi}
-                opts={{
-                  align: "start",
-                  loop: false,
-                  duration: 20,
-                  dragFree: false,
-                }}
-                className="w-full"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                <CarouselContent>
-                  <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                      <Image
-                        src="/3.png"
-                        alt="Interior Design 1"
-                        fill
-                        className="object-cover rounded-2xl"
-                        priority
-                      />
-                    </div>
-                  </CarouselItem>
-                  <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                      <Image
-                        src="/2.jpg"
-                        alt="Interior Design 2"
-                        fill
-                        className="object-cover rounded-2xl"
-                      />
-                    </div>
-                  </CarouselItem>
-                  <CarouselItem>
-                    <div className="relative w-full h-80 md:h-[400px] lg:h-[500px]">
-                      <Image
-                        src="/5.jpg"
-                        alt="Interior Design 3"
-                        fill
-                        className="object-cover rounded-2xl"
-                      />
-                    </div>
-                  </CarouselItem>
-                </CarouselContent>
-                <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
-                <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
-              </Carousel>
-              
-              {/* Dot Indicators */}
-              <div className="flex justify-center mt-6 space-x-2">
-                {[0, 1, 2].map((index) => (
-                  <button
-                    key={index}
-                    onClick={() => api?.scrollTo(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                      current === index
-                        ? "bg-white scale-110"
-                        : "bg-white/30 hover:bg-white/50"
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
+            {/* Right side - Bigger Carousel */}
+            <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
+              <div className="w-full max-w-2xl">
+            <Carousel
+                  setApi={setApi}
+              opts={{
+                align: "start",
+                    loop: false,
+                    duration: 20,
+                    dragFree: false,
+              }}
+              className="w-full"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+            >
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                    <Image
+                      src="/3.png"
+                      alt="Interior Design 1"
+                      fill
+                          className="object-cover rounded-3xl"
+                      priority
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                    <Image
+                      src="/2.jpg"
+                      alt="Interior Design 2"
+                      fill
+                          className="object-cover rounded-3xl"
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="relative w-full h-96 md:h-[500px] lg:h-[600px]">
+                    <Image
+                      src="/5.jpg"
+                      alt="Interior Design 3"
+                      fill
+                          className="object-cover rounded-3xl"
+                    />
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+              <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-white/40" />
+            </Carousel>
+                
+                {/* Dot Indicators */}
+                <div className="flex justify-center mt-8 space-x-3">
+                  {[0, 1, 2].map((index) => (
+                    <button
+                      key={index}
+                      onClick={() => api?.scrollTo(index)}
+                      className={`w-4 h-4 rounded-full transition-all duration-500 ${
+                        current === index
+                          ? "bg-white scale-110"
+                          : "bg-white/30 hover:bg-white/50"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
